@@ -89,6 +89,7 @@ input{
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
+    left: 9px;
   }
   
   .down {
@@ -106,6 +107,18 @@ input{
     border-width: 0 3px 3px 0;
   }
 
+  .clicked {
+    border: solid black; 
+    border-width: 0 3px 3px 0;
+  }
+
   i{
     position: relative;
   }
+
+.post-side{
+position: relative;
+background-color: blue;
+/* background-color: #f5eeed; */
+top: 20vh;
+}

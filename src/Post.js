@@ -20,14 +20,22 @@ const Post = ({postId, subreddit, user, timestamp, upvotes, body}) => {
                 </span>
             </div> 
         </center>  
-        <div className='post-side'>
+        <div>
             {upvotes}
-            <i className="arrow up"></i>
-            <i className="arrow down"></i>
+            <i className="arrow up" onClick={(e) => {
+                // console.log(e.target.classList)
+                console.log(e.target.parentElement.children)
+                e.target.classList.add("clicked");
+                e.target.parentElement.children[1].classList.remove("clicked");
+            }}></i>
+            <i className="arrow down" onClick={(e) => {
+                e.target.classList.add("clicked");
+                e.target.parentElement.children[0].classList.remove("clicked");
+            }}></i>
         </div>
       <center>
         <div className='post-body' style={{width: '70%'}}>{body}</div>
-        </center> 
+      </center> 
     </div>
   )
 }

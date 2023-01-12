@@ -191,7 +191,7 @@ function App() {
           <a href='/'>facepalm</a>
         </nav>
       </div>
-      <div className='background'>
+      <div className='background' style={{position: 'relative'}}>
         {postsStub.map(function(post){
           return <Post postId={post.postId} subreddit={post.subreddit} user={post.user} timestamp={post.timestamp} upvotes={post.upvotes} body={post.body}/>
         })}
