@@ -38,3 +38,6 @@ const commentsSlice = createSlice({
 
 export const {vote, comment} = commentsSlice.actions
 export const commentsSliceReducer =  commentsSlice.reducer
+
+
+//I think this entire file is unneeded
