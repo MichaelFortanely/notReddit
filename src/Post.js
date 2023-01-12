@@ -12,14 +12,12 @@ import React from 'react'
 const Post = ({postId, subreddit, user, timestamp, upvotes, body}) => {
   return (
     <div className='post-container'>
-        <center>
-            <div className='post-top'>
-                <span>r/{subreddit}</span>Posted by u/{user} on {timestamp}
-                <span>
-                    <button className='join-button'>Join</button>
-                </span>
-            </div> 
-        </center>  
+        <div className='post-top'>
+            <span id='reddit'>r/{subreddit}</span><span id='not-reddit'>&emsp; Posted by u/{user} on {timestamp}</span>
+            <span>
+                <button className='join-button'>Join</button>
+            </span>
+        </div> 
         <div>
             {upvotes}
             <i className="arrow up" onClick={(e) => {

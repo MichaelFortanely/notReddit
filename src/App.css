@@ -78,6 +78,8 @@ input{
     font-weight: bolder;
     padding: 4px;
     background-color: #9932CC;
+    position: relative;
+    right: -250px;
 }
 
 
@@ -122,3 +124,17 @@ background-color: blue;
 /* background-color: #f5eeed; */
 top: 20vh;
 }
+
+.post-top{
+    position: relative;
+    left: 150px;
+}
+
+#reddit{
+    font-size: x-large;
+}
+
+#not-reddit{
+    color: grey;
+}
+
