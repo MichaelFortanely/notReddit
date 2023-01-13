@@ -3,6 +3,7 @@ import {Routes, Route, Link} from "react-router-dom"
 import Body from './Body';
 import Homepage from './Homepage'
 import NotFound from './NotFound';
+import Subreddit from './Subreddit';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Homepage/>}>
         <Route path="home" element={<Body/>}/>
+        <Route path="subs/:subRedName" element={<Subreddit/>}/>
       </Route>
       <Route path="*" element={<NotFound/>}/>
     </Routes>

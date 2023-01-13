@@ -78,8 +78,8 @@ input{
     font-weight: bolder;
     padding: 4px;
     background-color: #9932CC;
-    position: relative;
-    right: -250px;
+    position: absolute;
+    right: 400px;
 }
 
 
@@ -137,4 +137,3 @@ top: 20vh;
 #not-reddit{
     color: grey;
 }
-
