@@ -17,8 +17,7 @@ let usersFavSubreddit = ['AITA', 'Pics', 'Surreal Memes', 'facepalm']
                     <center><a style={{fontSize: "30px"}} href='/home'>Home Page</a></center>
                     {usersFavSubreddit.map(function(subreddit){
                         return <a onClick={() => {
-                            window.location.href = subreddit
-                        }}>{subreddit}</a>
+                        }}href={`/subs/${subreddit}`}>{subreddit}</a>
                     })}
                 </nav>
             </div>
