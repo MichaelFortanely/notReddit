@@ -176,7 +176,7 @@ const Body = () => {
     <div>
         <div className='background' style={{position: 'relative'}}>
     {postsStub.map(function(post){
-      return <Post key={post.postId} postId={post.postId} subreddit={post.subreddit} user={post.user} timestamp={post.timestamp} upvotes={post.upvotes} body={post.body}/>
+      return <Post key={post.postId} subreddit={post.subreddit} user={post.user} timestamp={post.timestamp} upvotes={post.upvotes} body={post.body}/>
     })} </div>
   </div>
   )

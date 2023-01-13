@@ -9,7 +9,7 @@ import React from 'react'
     //    body: " asdfasdfasdfasdf"
        
 // }
-const Post = ({postId, subreddit, user, timestamp, upvotes, body}) => {
+const Post = ({subreddit, user, timestamp, upvotes, body}) => {
   return (
     <div className='post-container'>
         <div className='post-top'>

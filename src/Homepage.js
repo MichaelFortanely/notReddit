@@ -3,7 +3,7 @@ import { Outlet, Link } from 'react-router-dom'
 // href="subs/
 
 const Homepage = () => {
-let usersFavSubreddit = ['AITA', 'Pics', 'Surreal Memes', 'facepalm']
+let usersFavSubreddit = ['AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm']
   return (
     <>
         <div>
