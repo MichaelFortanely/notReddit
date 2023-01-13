@@ -1,5 +1,6 @@
 import React from 'react'
 import { Outlet, Link } from 'react-router-dom'
+// href="subs/
 
 const Homepage = () => {
 let usersFavSubreddit = ['AITA', 'Pics', 'Surreal Memes', 'facepalm']
@@ -15,8 +16,9 @@ let usersFavSubreddit = ['AITA', 'Pics', 'Surreal Memes', 'facepalm']
                 <nav className='side'>
                     <center><a style={{fontSize: "30px"}} href='/home'>Home Page</a></center>
                     {usersFavSubreddit.map(function(subreddit){
-                        let x = '/subs' + subreddit;
-                        return <Link to="/subs/AITA">{subreddit}</Link>
+                        return <a onClick={() => {
+                            window.location.href = subreddit
+                        }}>{subreddit}</a>
                     })}
                 </nav>
             </div>
