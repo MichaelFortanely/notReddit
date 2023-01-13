@@ -12,10 +12,13 @@
     padding-left: 15px;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 .top{
-    display: relative;
     padding: 0px;
-    position: fixed;
+    position: fixed; /* Set the navbar to fixed position */
 }
 
 input:hover{
@@ -64,6 +67,10 @@ input{
     align-items: center;
 }
 
+.subreddit{
+    top: 130px;
+}
+
 .post-container{
     background-color: white;
     margin: 10px;
@@ -108,6 +115,14 @@ input{
     border: solid black; 
     border-width: 0 3px 3px 0;
   }
+
+.sub-name{
+    position: relative;
+    left: 700px;
+    top: 120px;
+    font-size: 90px;
+    margin: 10px;
+}
 
   .clicked {
     border: solid black; 
