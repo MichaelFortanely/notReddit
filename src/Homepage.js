@@ -1,15 +1,16 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import Logo from './images/Logo.jpeg'
+import Logo from './images/reddit.jpg'
 // href="subs/
 
 const Homepage = () => {
-let usersFavSubreddit = ['AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm', 'AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm', 'AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm', 'AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm' , 'AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm', 'AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm', 'AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm', 'AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm']
+let usersFavSubreddit = ['AITA', 'Books', 'Pics', 'Surreal Memes']
   return (
     <div id="#scroll-parent">
         <div>
             <nav className='top'>
                 <h3>notReddit</h3>
+                <img style={{width: '60px', left: '160px', top: '10px'}} src={Logo} alt="Upside down reddit logo"/>
                 <input type="text" placeholder="Search subreddit by name.."></input>
                 <button className='login-button' onClick={() => console.log('login')}>Log in</button>
             </nav>
@@ -23,7 +24,6 @@ let usersFavSubreddit = ['AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm', '
                 </nav>
             </div>
         </div>
-        {/* <img src={Logo} alt="Upside down reddit logo"/> */}
         <Outlet/>
     </div>
   )

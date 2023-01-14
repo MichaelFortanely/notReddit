@@ -67,6 +67,10 @@ h3{
     background-color: #e79400;
 }
 
+.side{
+    height: 200vh;
+}
+
 .side a{
     height: 5vh;
     display: flex;
