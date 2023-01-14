@@ -1,8 +1,7 @@
 .side{
     display: flex;
-    position: relative;
+    position: fixed;
     flex-direction: column;
-    height: 90vh;
     font-size: 20px;
     width: 15vw;
     border:1px solid black;
@@ -13,7 +12,7 @@
 }
 
 html, body {
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 .top{
@@ -23,8 +22,29 @@ html, body {
 
 input:hover{
     border-color: blue;
-    border-radius: 5px;
+    background-color: white;
+    border-width: 2px;
 }
+
+input:focus{
+    border-color: blue;
+    background-color: white;
+    border-width: 2px;
+}
+
+input{
+    border-width: 1px;
+    border-radius: 5px;
+    position: relative;
+    left: 700px;
+    height: 45px;
+    width: 30vw;
+    margin: 0px;
+    bottom: 35px;
+    background-color: #f5eeed;
+    border-color: gray;
+}
+
 h3{
     position: relative;
     left: 50px;
@@ -43,28 +63,30 @@ h3{
     top: -40px;
 }
 
-input{
-    position: relative;
-    left: 700px;
-    height: 45px;
-    width: 30vw;
-    margin: 0px;
-    bottom: 35px;
+.side a{
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    text-decoration: none;
 }
 
-.side a{
-    margin: 5px;
+.side a:hover{
+    background-color: #f5eeed;
 }
 
 .background{
     background-color: lightgrey;
     width: 82vw;
     left: 300px;
-    top: 100px;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+    top: 245px
 }
 
 .subreddit{
@@ -76,6 +98,7 @@ input{
     margin: 10px;
     padding: 10px;
     width: 70%;
+    border-radius: 10px;
 }
 
 .join-button {
@@ -136,7 +159,6 @@ input{
 .post-side{
 position: relative;
 background-color: blue;
-/* background-color: #f5eeed; */
 top: 20vh;
 }
 

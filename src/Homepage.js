@@ -3,9 +3,9 @@ import { Outlet, Link } from 'react-router-dom'
 // href="subs/
 
 const Homepage = () => {
-let usersFavSubreddit = ['AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm']
+let usersFavSubreddit = ['AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm', 'AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm', 'AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm', 'AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm' , 'AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm', 'AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm', 'AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm', 'AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm']
   return (
-    <>
+    <div id="#scroll-parent">
         <div>
             <nav className='top'>
                 <h3>notReddit</h3>
@@ -23,7 +23,7 @@ let usersFavSubreddit = ['AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm']
             </div>
         </div>
         <Outlet/>
-    </>
+    </div>
   )
 }
 
