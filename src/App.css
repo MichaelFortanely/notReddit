@@ -63,6 +63,10 @@ h3{
     top: -40px;
 }
 
+.login-button:hover{
+    background-color: #e79400;
+}
+
 .side a{
     height: 5vh;
     display: flex;
@@ -173,4 +177,8 @@ top: 20vh;
 
 #not-reddit{
     color: grey;
+}
+
+img {
+    position: absolute;
 }

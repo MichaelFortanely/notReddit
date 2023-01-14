@@ -1,5 +1,6 @@
 import React from 'react'
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
+import Logo from './images/Logo.jpeg'
 // href="subs/
 
 const Homepage = () => {
@@ -22,6 +23,7 @@ let usersFavSubreddit = ['AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm', '
                 </nav>
             </div>
         </div>
+        <img src={Logo} alt="Upside down reddit logo"/>
         <Outlet/>
     </div>
   )
