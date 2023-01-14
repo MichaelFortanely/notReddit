@@ -1,6 +1,7 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Logo from './images/reddit.jpg'
+import Post from './Post'
 // href="subs/
 
 const Homepage = () => {

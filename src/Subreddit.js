@@ -20,7 +20,7 @@ const Subreddit = () => {
             setPostsStub(data)
         }
         getapi(`http://localhost:9000/subs/${subName.split(' ').join('%20')}`)
-    }, [])
+    }, [subName])
   return (
   <div>
         <h1 className='sub-name'>
@@ -28,7 +28,7 @@ const Subreddit = () => {
         </h1>
         <div className='background subreddit' style={{position: 'relative'}}>
             {postsStub.map(function(post){
-            return <Post key={post.postId} postId={post.postId} subreddit={post.subreddit} user={post.user} timestamp={post.timestamp} upvotes={post.upvotes} body={post.body}/>
+            return <Post key={post.postId} postID={post.postID} subreddit={post.subreddit} user={post.user} timestamp={post.timestamp} upvotes={post.upvotes} body={post.body}/>
             })} 
         </div>
     </div>

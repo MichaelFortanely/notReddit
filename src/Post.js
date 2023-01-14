@@ -10,13 +10,13 @@ import { useState } from 'react'
     //    body: " asdfasdfasdfasdf"
        
 // }
-const Post = ({subreddit, user, timestamp, upvotes, body}) => {
+const Post = ({postID, subreddit, user, timestamp, upvotes, body}) => {
     const [voteChange, setVoteChange] = useState(upvotes)
     const [topClick, setTopClick] = useState(false)
     const [bottomClick, setBottomClick] = useState()
 
   return (
-    <div className='post-container'>
+    <div className='post-container' onClick={() => window.location.href = `http://localhost:3000/posts/${postID}`}>
         <div className='post-top'>
             <span id='reddit'>r/{subreddit}</span><span id='not-reddit'>&emsp; Posted by u/{user} on {timestamp}</span>
             <span>
