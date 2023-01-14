@@ -23,7 +23,7 @@ let usersFavSubreddit = ['AITA', 'Books', 'Pics', 'Surreal Memes', 'facepalm', '
                 </nav>
             </div>
         </div>
-        <img src={Logo} alt="Upside down reddit logo"/>
+        {/* <img src={Logo} alt="Upside down reddit logo"/> */}
         <Outlet/>
     </div>
   )

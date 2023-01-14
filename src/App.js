@@ -4,7 +4,6 @@ import Body from './Body';
 import Homepage from './Homepage'
 import NotFound from './NotFound';
 import Subreddit from './Subreddit';
-import Logo from './images/Logo.jpeg'
 
 function App() {
   return (

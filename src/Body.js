@@ -1,5 +1,6 @@
 import React from 'react'
 import Post from './Post';
+import {useEffect} from 'react'
 
 let postsStub = [{
     postId: 0,
@@ -172,8 +173,12 @@ Being able to step outside for a few minutes to take a breather is really import
 
 
 const Body = () => {
+    useEffect(() => {
+        console.log(window.location.href)
+    }, [])
   return (
     <div>
+        <h1 style={{position: 'absolute', top: '50px', fontSize: '100px', left: '700px'}}>Home</h1>
         <div className='background' style={{position: 'relative'}}>
     {postsStub.map(function(post){
       return <Post key={post.postId} subreddit={post.subreddit} user={post.user} timestamp={post.timestamp} upvotes={post.upvotes} body={post.body}/>
