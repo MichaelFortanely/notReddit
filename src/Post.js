@@ -14,11 +14,12 @@ const Post = ({postID, subreddit, user, timestamp, upvotes, body}) => {
     const [voteChange, setVoteChange] = useState(upvotes)
     const [topClick, setTopClick] = useState(false)
     const [bottomClick, setBottomClick] = useState()
-
+    const date = new Date(timestamp);
+    const formattedTimestamp = date.toLocaleString("en-us", { month: "long", day: "numeric", year: "numeric" });
   return (
-    <div className='post-container' onClick={() => window.location.href = `http://localhost:3000/posts/${postID}`}>
+    <div className='post-container' onClick={() => window.location.href = `http://localhost:3000/posts/${postID}/${subreddit}`}>
         <div className='post-top'>
-            <span id='reddit'>r/{subreddit}</span><span id='not-reddit'>&emsp; Posted by u/{user} on {timestamp}</span>
+            <span id='reddit'>r/{subreddit}</span><span id='not-reddit'>&emsp; Posted by u/{user} on {formattedTimestamp}</span>
             <span>
                 <button className='join-button'>Join</button>
             </span>

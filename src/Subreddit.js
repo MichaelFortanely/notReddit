@@ -19,7 +19,7 @@ const Subreddit = () => {
             console.log(data);
             setPostsStub(data)
         }
-        getapi(`http://localhost:9000/subs/${subName.split(' ').join('%20')}`)
+        getapi(`http://localhost:9000/posts/ALL/${subName.split(' ').join('%20')}`)
     }, [subName])
   return (
   <div>

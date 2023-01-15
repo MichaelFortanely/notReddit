@@ -17,7 +17,7 @@ function App() {
         <Route path="subs/" >
           <Route path=":subredditName" element={<Subreddit/>}/>
         </Route>
-        <Route path="posts/:postID" element={<PostPage/>}/>
+        <Route path="posts/:postID/:subRedditName" element={<PostPage/>}/>
       </Route>
       <Route path="*" element={<NotFound/>}/>
     </Routes>
