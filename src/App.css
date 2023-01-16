@@ -43,6 +43,7 @@ input{
     bottom: 35px;
     background-color: #f5eeed;
     border-color: gray;
+    padding: 15px;
     font-size: large;
 }
 
@@ -108,6 +109,7 @@ h3{
     padding: 10px;
     width: 70%;
     border-radius: 10px;
+    position: relative;
 }
 
 .join-button {
@@ -186,4 +188,13 @@ top: 20vh;
 
 img {
     position: absolute;
+}
+
+#response{
+    width: 80%;
+    font-size: large;
+    position: relative;
+    top: 10px;
+    height: 10vh;
+    padding: 10px;
 }

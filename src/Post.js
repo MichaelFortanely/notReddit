@@ -10,14 +10,15 @@ import { useState } from 'react'
     //    body: " asdfasdfasdfasdf"
        
 // }
-const Post = ({postID, subreddit, user, timestamp, upvotes, body}) => {
+const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body}) => {
     const [voteChange, setVoteChange] = useState(upvotes)
     const [topClick, setTopClick] = useState(false)
     const [bottomClick, setBottomClick] = useState()
     const date = new Date(timestamp);
     const formattedTimestamp = date.toLocaleString("en-us", { month: "long", day: "numeric", year: "numeric" });
+   isMainPost = isMainPost || false
   return (
-    <div className='post-container' onClick={() => window.location.href = `http://localhost:3000/posts/${postID}/${subreddit}`}>
+    <div className='post-container'>
         <div className='post-top'>
             <span id='reddit'>r/{subreddit}</span><span id='not-reddit'>&emsp; Posted by u/{user} on {formattedTimestamp}</span>
             <span>
@@ -77,8 +78,9 @@ const Post = ({postID, subreddit, user, timestamp, upvotes, body}) => {
             }}></i>
         </div>
       <center>
-        <div className='post-body' style={{width: '70%'}}>{body}</div>
-      </center> 
+        <div className='post-body' style={{width: '70%'}} onClick={() => window.location.href = `http://localhost:3000/posts/${postID}/${subreddit}`}>{body}</div>
+      </center> <center>
+        {isMainPost && <textarea onClick={(e) => e.preventDefault()} id='response'></textarea>}</center>
     </div>
   )
 }
