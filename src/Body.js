@@ -198,7 +198,7 @@ const Body = () => {
         <h1 style={{position: 'absolute', top: '50px', fontSize: '100px', left: '700px'}}>Home</h1>
         <div className='background' style={{position: 'relative'}}>
     {postsStub.map(function(post){
-      return <Post key={post.postId} subreddit={post.subreddit} user={post.user} timestamp={post.timestamp} upvotes={post.upvotes} body={post.body}/>
+      return <Post key={post.postID} postID={post.postID} subreddit={post.subreddit} user={post.user} timestamp={post.timestamp} upvotes={post.upvotes} body={post.body}/>
     })} </div>
   </div>
   )
