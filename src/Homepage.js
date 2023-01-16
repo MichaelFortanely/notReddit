@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 const Homepage = () => {
 let usersFavSubreddit = ['AITA', 'Books', 'Pics', 'Surreal Memes']
 const [search, setSearch] = useState('')
+const [options, setOptions] = useState([])
 useEffect(() => {
     //do a fetch for all of the posts in this subreddit
     async function getapi(url) {
@@ -19,7 +20,8 @@ useEffect(() => {
         
         // Storing data in form of JSON
         var data = await response.json();
-        console.log(data);
+        console.log(data.map(item => item.title));
+        setOptions(data)
         // setPostsStub(data)
     }
     getapi(`http://localhost:9000/posts/search/${search}`)
@@ -41,6 +43,7 @@ useEffect(() => {
         }}>
         <label htmlFor='search'></label>
         <input
+            list='list-of-options'
             id='search'
             type='text'
             role='searchbox'
@@ -48,6 +51,11 @@ useEffect(() => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
         />
+        <datalist id="list-of-options">
+            {options.map(function(option){
+                return (<option>{option.title}</option>)
+            })}
+        </datalist>
     </form>
 
 
