@@ -1,22 +1,36 @@
 import React from 'react'
 import { useState } from 'react'
 
-// post{
-//     postId: uuid(),
-//     subreddit: 'WhitePeopleTwitter',
-//     user: "u/light_happiness53",
-//     timestamp: "June 10, 2018",
-//     upvotes: 33900,
-    //    body: " asdfasdfasdfasdf"
-       
-// }
+
 const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body}) => {
+    console.log('upvotes ' + upvotes)
+    const [first, setFirst] = useState(true)
     const [voteChange, setVoteChange] = useState(upvotes)
+    console.log('voteChange: ' + voteChange)
+                // if(voteChange === undefined){
+                //     console.log('here upvotes: ' + upvotes)
+                //     setVoteChange(upvotes)
+                // }
     const [topClick, setTopClick] = useState(false)
     const [bottomClick, setBottomClick] = useState()
     const date = new Date(timestamp);
     const formattedTimestamp = date.toLocaleString("en-us", { month: "long", day: "numeric", year: "numeric" });
    isMainPost = isMainPost || false
+   async function voteApi(url, count) {
+
+    // Storing response
+    const response = await fetch(url, {
+        mode: "cors",
+        headers: {"Content-Type": "application/json"},
+        method: 'PATCH',
+        body: JSON.stringify({
+          count: count,
+        })},);
+    
+    // Storing data in form of JSON
+    var data = await response.json();
+    console.log('response from patch request: ' + data);
+}
   return (
     <div className='post-container'>
         <div className='post-top'>
@@ -25,18 +39,22 @@ const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body}) =
                 <button className='join-button'>Join</button>
             </span>
         </div> 
+            {!isMainPost && 
         <div>
             {voteChange}
             <i className="arrow up" onClick={(e) => {
+                setFirst(false)
                 // console.log(e.target.classList)
                 // console.log(e.target.parentElement.children)
-                console.log(e.target.classList);
                 // setVoteChange(voteChange)
                 // top and !bottom -> -1
                 //!top and bottom -> + 2
                 // !top and !bottom -> + 1
+                let makeOneCall = 0
+
                 if(topClick){
                     setVoteChange(voteChange - 1)
+                    makeOneCall = -1
                     setTopClick(false)
                     e.target.classList.remove("clicked");
                 }
@@ -44,12 +62,15 @@ const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body}) =
                     setTopClick(true)
                     e.target.classList.add("clicked");
                     if(bottomClick){
+                        makeOneCall = 2
                         setVoteChange(voteChange + 2)
                     } else{
+                        makeOneCall = 1
                         setVoteChange(voteChange + 1)
                     }
                  }
                 setBottomClick(false)
+                voteApi(`http://localhost:9000/posts/vote/${postID}`, makeOneCall)
                 console.log(e.target.classList)
                 e.target.parentElement.children[1].classList.remove("clicked");
             }}></i>
@@ -58,25 +79,31 @@ const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body}) =
                 // top and !bottom -> - 2
                 //!top and bottom -> + 1
                 // !top and !bottom -> - 1
+                let makeOneCall = 0
                 if(bottomClick){
                     setBottomClick(false)
                     setVoteChange(voteChange + 1)
+                    makeOneCall = 1
                     e.target.classList.remove("clicked");
                 }
                 else {
                     setBottomClick(true)
                     e.target.classList.add("clicked");
                     if(topClick){
+                        makeOneCall = -2
                         setVoteChange(voteChange - 2)
                     } else{
+                        makeOneCall = -1
                         setVoteChange(voteChange - 1)
                     }
                 }
                 setTopClick(false)
+                voteApi(`http://localhost:9000/posts/vote/${postID}`, makeOneCall)
                 console.log(e.target.classList)
                 e.target.parentElement.children[0].classList.remove("clicked");
             }}></i>
         </div>
+}
       <center>
         <div className='post-body' style={{width: '70%'}} onClick={() => window.location.href = `http://localhost:3000/posts/${postID}/${subreddit}`}>{body}</div>
       </center> <center>

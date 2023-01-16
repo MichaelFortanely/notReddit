@@ -5,6 +5,27 @@ import { useState, useEffect } from 'react'
 
 //this will be the page I redirect to
 const PostPage = () => {
+    // function retrieveVote(){
+    //     async function second(url) {
+    //         console.log('url' + url)
+    //         // Storing response
+    //         console.log('url in second is ' + url)
+    //         const response = await fetch(url, {
+    //             mode: "cors",
+    //             headers: {"Content-Type": "application/json"}});
+                
+    //             // Storing data in form of JSON
+    //             var data = await response.json();
+    //             console.log('data')
+    //             console.log(data[0])
+    //             setVotes(data[0].upvotes)
+    //             // setVotes(data[0].upvotes)
+    //             // console.log('xx' + data[0].upvotes)
+    //             // console.log('data.body is ' + data.body)
+    //             // console.log(data.body)
+    //         }
+    //     }
+    // retrieveVote()
     const[responseComments, setResponseComments] = useState([])
     const[mainComment, setMainComment] = useState("")
     // const [subName, setSubName] = useState("")
@@ -42,11 +63,11 @@ const PostPage = () => {
             
             // Storing data in form of JSON
             var data = await response.json();
-            console.log('keys of data: ' + data)
-            console.log(data[0])
+            console.log('data')
+            console.log(data[0].upvotes)
             setMainComment(data[0])
-            console.log('data.body is ' + data.body)
-            console.log(data.body)
+            // console.log('data.body is ' + data.body)
+            // console.log(data.body)
             }
         //to make a call to the api i will need 3 parameters -> subreddit name, postID, and method
         //the methods are to either get the main comment or to get the responses to it
@@ -56,7 +77,13 @@ const PostPage = () => {
         second(`http://localhost:9000/posts/ALL/1/${postID}`)
         console.log('mainComment is ');
         console.log(mainComment)
+        console.log('end')
+        // console.log('mainComment.upvotes ' + mainComment.upvotes)
+        // setVotes(mainComment.upvotes)
     }, [])
+
+
+
 
   return (
     <div>
@@ -64,7 +91,7 @@ const PostPage = () => {
             {subName}
         </h1>
         <div className='background' style={{position: 'relative'}}>
-            return <Post key={mainComment.postId} isMainPost={true} postID={mainComment.postID} subreddit={mainComment.subreddit} user={mainComment.user} timestamp={mainComment.timestamp} upvotes={mainComment.upvotes} body={mainComment.body}/>
+            <Post key={mainComment.postId} isMainPost={true} postID={mainComment.postID} subreddit={mainComment.subreddit} user={mainComment.user} timestamp={mainComment.timestamp} upvotes={mainComment.upvotes} body={mainComment.body}/>
         </div>
         <div style={{height: '10vh',}}></div>
         <div className='background' style={{position: 'relative'}}>
