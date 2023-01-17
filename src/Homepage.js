@@ -21,6 +21,7 @@ useEffect(() => {
         // Storing data in form of JSON
         var data = await response.json();
         console.log(data.map(item => item.title));
+        console.log(data)
         setOptions(data)
         // setPostsStub(data)
     }
@@ -36,14 +37,9 @@ useEffect(() => {
                 {/* <input type="text"  value={search}
             onChange={(e) => setSearch(e.target.value)} onSubmit={() => console.log('Search is' + search)}></input> */}
 
-<form className='searchForm' onSubmit={(e) => { e.preventDefault() 
-        console.log('search is: ' + search)
-        let suggestions = ""
-        console.log('suggestions: ' + suggestions)
-        }}>
+<form className='searchForm'>
         <label htmlFor='search'></label>
         <input
-            list='list-of-options'
             id='search'
             type='text'
             role='searchbox'
@@ -51,11 +47,11 @@ useEffect(() => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
         />
-        <datalist id="list-of-options">
+        <div id="list-of-options">
             {options.map(function(option){
-                return (<option>{option.title}</option>)
+                return <option>{option.title}</option>
             })}
-        </datalist>
+        </div>
     </form>
 
 

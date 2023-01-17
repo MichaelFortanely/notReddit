@@ -198,3 +198,10 @@ img {
     height: 10vh;
     padding: 10px;
 }
+
+#list-of-options{
+    position: relative;
+    background-color: red;
+    z-index: -1;
+    left: 600px;
+}
