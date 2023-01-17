@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import Logo from './images/reddit.jpg'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
 // href="subs/
 
 const Homepage = () => {
@@ -28,6 +29,13 @@ useEffect(() => {
     getapi(`http://localhost:9000/posts/search/${search}`)
     console.log('search: ' + search)
 }, [search])
+
+let navigate = useNavigate(); 
+const routeChange = () =>{ 
+  let path = '/login'; 
+  navigate(path);
+}
+
   return (
     <div id="#scroll-parent">
         <div>
@@ -53,9 +61,7 @@ useEffect(() => {
             })}
         </div>
     </form>
-
-
-                <button className='login-button' onClick={() => console.log('login')}>Log in</button>
+                <button className='login-button'  onClick={routeChange}>Log in</button>
             </nav>
             <div style={{position: 'fixed', top: '100px'}}>
                 <nav className='side'>

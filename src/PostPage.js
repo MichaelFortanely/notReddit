@@ -91,12 +91,12 @@ const PostPage = () => {
             {subName}
         </h1>
         <div className='background' style={{position: 'relative'}}>
-            <Post key={mainComment.postId} isMainPost={true} postID={mainComment.postID} subreddit={mainComment.subreddit} user={mainComment.user} timestamp={mainComment.timestamp} upvotes={mainComment.upvotes} body={mainComment.body}/>
+            <Post key={mainComment.postId} isMainPost={true} postID={mainComment.postID} subreddit={mainComment.subreddit} user={mainComment.user} timestamp={mainComment.timestamp} upvotes={mainComment.upvotes} body={mainComment.body} title={mainComment.title}/>
         </div>
         <div style={{height: '10vh',}}></div>
         <div className='background' style={{position: 'relative'}}>
             {responseComments.map(function(post){
-            return <Post key={post.postId} isMainPost={false} postID={post.postID} subreddit={post.subreddit} user={post.user} timestamp={post.timestamp} upvotes={post.upvotes} body={post.body}/>
+            return <Post key={post.postId} isMainPost={false} postID={post.postID} subreddit={post.subreddit} user={post.user} timestamp={post.timestamp} upvotes={post.upvotes} body={post.body} title={post.title}/>
             })} 
         </div>
     </div>

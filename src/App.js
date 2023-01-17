@@ -23,8 +23,7 @@ function App() {
         <Route path="posts/:postID/:subRedditName" element={<PostPage/>}/>
       </Route>
       <Route path="create/" element={<CreatePost/>} />
-      <Route path="/login/" element={<Login/>} />
-      <Route></Route>
+      <Route path="login/" element={<Login/>} />
       <Route path="*" element={<NotFound/>}/>
     </Routes>
   </>

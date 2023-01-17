@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 
 
-const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body}) => {
+const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body, title}) => {
     console.log('upvotes ' + upvotes)
     const [first, setFirst] = useState(true)
     const [voteChange, setVoteChange] = useState(upvotes)
@@ -105,8 +105,8 @@ const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body}) =
         </div>
 }
       <center>
+        <h3 style={{position: 'relative', left: '-100px'}}>{title}</h3>
         <div className='post-body' style={{width: '70%'}} onClick={() => window.location.href = `http://localhost:3000/posts/${postID}/${subreddit}`}>{body}</div>
-      </center> <center>
         {isMainPost && <textarea onClick={(e) => e.preventDefault()} id='response'></textarea>}</center>
     </div>
   )
