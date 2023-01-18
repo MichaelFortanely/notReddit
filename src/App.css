@@ -113,6 +113,7 @@ h3{
 }
 
 .join-button {
+    display: none;
     width: 3vw;
     border-radius: 15px;
     color: white;

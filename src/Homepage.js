@@ -10,7 +10,6 @@ const Homepage = () => {
 let usersFavSubreddit = ['AITA', 'Books', 'Pics', 'Surreal Memes']
 const [search, setSearch] = useState('')
 const [options, setOptions] = useState([])
-// const [isLoggedIn, setIsLoggedIn] = useState(false)
 // let isLoggedIn = false
 // if(){
 //     sessionStorage = 
