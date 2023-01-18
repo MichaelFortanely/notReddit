@@ -209,3 +209,7 @@ img {
 .class{
     margin: 5px;
 }
+
+#logout {
+    background-color: red;
+}

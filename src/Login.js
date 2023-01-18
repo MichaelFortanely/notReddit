@@ -34,6 +34,10 @@ const routeChange = () =>{
         sessionStorage.clear()
       }
       console.log("sessionStorage.getItem(\"user\"): " + sessionStorage.getItem("user"))
+      console.log(data.status)
+      if(data.status === 300){
+        alert(data.message)
+      }
   }
   getapi(`http://localhost:9000/users/`)
   }

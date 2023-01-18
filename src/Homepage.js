@@ -3,15 +3,21 @@ import { Outlet } from 'react-router-dom'
 import Logo from './images/reddit.jpg'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { useNavigate } from "react-router-dom";
+import Button from './Button'
 // href="subs/
 
 const Homepage = () => {
 let usersFavSubreddit = ['AITA', 'Books', 'Pics', 'Surreal Memes']
 const [search, setSearch] = useState('')
 const [options, setOptions] = useState([])
+// const [isLoggedIn, setIsLoggedIn] = useState(false)
+// let isLoggedIn = false
+// if(){
+//     sessionStorage = 
+// }
 useEffect(() => {
     //do a fetch for all of the posts in this subreddit
+    setOptions([])
     async function getapi(url) {
 
         // Storing response
@@ -29,12 +35,6 @@ useEffect(() => {
     getapi(`http://localhost:9000/posts/search/${search}`)
     console.log('search: ' + search)
 }, [search])
-
-let navigate = useNavigate(); 
-const routeChange = () =>{ 
-  let path = '/login'; 
-  navigate(path);
-}
 
   return (
     <div id="#scroll-parent">
@@ -61,7 +61,9 @@ const routeChange = () =>{
             })}
         </div>
     </form>
-                <button className='login-button'  onClick={routeChange}>Log in</button>
+                {/* {(<button className='login-button'  onClick={routeChange}>Log in</button>) && true}
+                {<button className='login-button' id="logout"  onClick={routeChange}>Log in</button> && !isLoggedIn} */}
+                <Button/>
             </nav>
             <div style={{position: 'fixed', top: '100px'}}>
                 <nav className='side'>
