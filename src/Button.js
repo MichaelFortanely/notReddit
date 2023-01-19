@@ -50,7 +50,6 @@ let userKarma = -1
         if(first){
             if(!isLoggedIn){
                 //if not logged in
-                sessionStorage.setItem("user", null)
                 document.querySelector(".login-button").removeAttribute("id");
                 document.querySelector(".login-button").innerText = 'Login'
             } else{

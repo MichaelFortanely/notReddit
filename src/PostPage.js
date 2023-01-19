@@ -1,6 +1,6 @@
 import React from 'react'
 import Post from './Post'
-import CommentThread from './CommentThread'
+import Comment from './Comment'
 import { useState, useEffect } from 'react'
 
 //this will be the page I redirect to
@@ -39,20 +39,8 @@ const PostPage = () => {
     // //  two parameters used for getting parmeters used with api
     useEffect(() => {
         //do a fetch for all of the posts in this subreddit
-        async function getapi(url, ) {
     
-            console.log('url' + url)
-            // Storing response
-            const response = await fetch(url, {
-                mode: "cors",
-                headers: {"Content-Type": "application/json"}});
-            
-            // Storing data in form of JSON
-            var data = await response.json();
-            setResponseComments(data.filter(post => post.postID !== postID))
-            }
-
-        async function second(url) {
+        async function _internal(url) {
 
             console.log('url' + url)
             // Storing response
@@ -68,16 +56,23 @@ const PostPage = () => {
             setMainComment(data[0])
             // console.log('data.body is ' + data.body)
             // console.log(data.body)
+                console.log('adsfasdfasasd\n\n\n\nHERERERE')
+            // Storing response
+            const post = await fetch(`http://localhost:9000/posts/ALL/1/${postID}`, {
+                mode: "cors",
+                headers: {"Content-Type": "application/json"},
+            });
+            
+            // Storing data in form of JSON
+            var postReceived = await post.json();
+            // console.log('PRINTING OUT THE postRe\n\n\n\\n')
+            // console.log(postReceived[0].commentThreads)
+            setResponseComments(postReceived[0].commentThreads)
+            //for each comment 
             }
         //to make a call to the api i will need 3 parameters -> subreddit name, postID, and method
         //the methods are to either get the main comment or to get the responses to it
-        getapi(`http://localhost:9000/posts/ALL/${subName}`)
-        console.log('value of postID var: ')
-        console.log(postID)
-        second(`http://localhost:9000/posts/ALL/1/${postID}`)
-        console.log('mainComment is ');
-        console.log(mainComment)
-        console.log('end')
+        _internal(`http://localhost:9000/posts/ALL/1/${postID}`)
         // console.log('mainComment.upvotes ' + mainComment.upvotes)
         // setVotes(mainComment.upvotes)
     }, [])
@@ -95,9 +90,12 @@ const PostPage = () => {
         </div>
         <div style={{height: '10vh',}}></div>
         <div className='background' style={{position: 'relative'}}>
-            {responseComments.map(function(post){
+            {/* {responseComments.map(function(post){
             return <Post key={post.postId} isMainPost={false} postID={post.postID} subreddit={post.subreddit} user={post.user} timestamp={post.timestamp} upvotes={post.upvotes} body={post.body} title={post.title}/>
-            })} 
+            })}  */}
+        {responseComments.map(function(commentID) {
+            return <Comment commentID={commentID}/>
+        })}
         </div>
     </div>
   )

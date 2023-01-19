@@ -107,7 +107,20 @@ const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body, ti
       <center>
         <h3 style={{position: 'relative', left: '-100px'}}>{title}</h3>
         <div className='post-body' style={{width: '70%'}} onClick={() => window.location.href = `http://localhost:3000/posts/${postID}/${subreddit}`}>{body}</div>
-        {isMainPost && <textarea onClick={(e) => e.preventDefault()} id='response'></textarea>}</center>
+        
+            {isMainPost && 
+            <form onSubmit={(e) => {
+                //in the postpage I will add the comments to be where the posts not on that page should have been
+                //add the comment
+                e.preventDefault()
+                console.log('submitted')
+            }
+            }>
+                <textarea onClick={(e) => e.preventDefault()} id='response' placeholder="What are your thoughts?"></textarea>
+                <button type="submit" style={{width: '5vw', left: '-500px', position: 'relative'}}>Post Comment</button>
+            </form>
+            }</center>
+        
     </div>
   )
 }
