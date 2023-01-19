@@ -2,30 +2,11 @@ import React from 'react'
 import Post from './Post'
 import Comment from './Comment'
 import { useState, useEffect } from 'react'
+import {BACKEND_URL} from './config.js'
 
 //this will be the page I redirect to
 const PostPage = () => {
-    // function retrieveVote(){
-    //     async function second(url) {
-    //         console.log('url' + url)
-    //         // Storing response
-    //         console.log('url in second is ' + url)
-    //         const response = await fetch(url, {
-    //             mode: "cors",
-    //             headers: {"Content-Type": "application/json"}});
-                
-    //             // Storing data in form of JSON
-    //             var data = await response.json();
-    //             console.log('data')
-    //             console.log(data[0])
-    //             setVotes(data[0].upvotes)
-    //             // setVotes(data[0].upvotes)
-    //             // console.log('xx' + data[0].upvotes)
-    //             // console.log('data.body is ' + data.body)
-    //             // console.log(data.body)
-    //         }
-    //     }
-    // retrieveVote()
+   
     const[responseComments, setResponseComments] = useState([])
     const[mainComment, setMainComment] = useState("")
     // const [subName, setSubName] = useState("")
@@ -35,7 +16,6 @@ const PostPage = () => {
     let array = window.location.href.split('/')
     let subName = array[array.length - 1].split('%20').join(' ')  
     console.log(subName, postID)
-    // onClick={() => window.location.href = `http://localhost:3000/posts/${postID}/${subreddit}`}
     // //  two parameters used for getting parmeters used with api
     useEffect(() => {
         //do a fetch for all of the posts in this subreddit
@@ -58,7 +38,7 @@ const PostPage = () => {
             // console.log(data.body)
                 console.log('adsfasdfasasd\n\n\n\nHERERERE')
             // Storing response
-            const post = await fetch(`http://localhost:9000/posts/ALL/1/${postID}`, {
+            const post = await fetch(`${BACKEND_URL}posts/ALL/1/${postID}`, {
                 mode: "cors",
                 headers: {"Content-Type": "application/json"},
             });
@@ -72,7 +52,7 @@ const PostPage = () => {
             }
         //to make a call to the api i will need 3 parameters -> subreddit name, postID, and method
         //the methods are to either get the main comment or to get the responses to it
-        _internal(`http://localhost:9000/posts/ALL/1/${postID}`)
+        _internal(`${BACKEND_URL}posts/ALL/1/${postID}`)
         // console.log('mainComment.upvotes ' + mainComment.upvotes)
         // setVotes(mainComment.upvotes)
     }, [])

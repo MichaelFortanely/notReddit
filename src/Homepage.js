@@ -4,6 +4,7 @@ import Logo from './images/reddit.jpg'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import Button from './Button'
+import {BACKEND_URL} from './config.js'
 // href="subs/
 
 const Homepage = () => {
@@ -31,7 +32,7 @@ useEffect(() => {
         setOptions(data)
         // setPostsStub(data)
     }
-    getapi(`http://localhost:9000/posts/search/${search}`)
+    getapi(`${BACKEND_URL}posts/search/${search}`)
     console.log('search: ' + search)
 }, [search])
 

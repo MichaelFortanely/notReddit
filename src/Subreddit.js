@@ -1,6 +1,7 @@
 import React from 'react'
 import Post from './Post'
 import { useEffect, useState } from 'react';
+import {BACKEND_URL} from './config.js'
 
 const Subreddit = () => {
     const[postsStub, setPostsStub] = useState([])
@@ -19,7 +20,7 @@ const Subreddit = () => {
             console.log(data);
             setPostsStub(data)
         }
-        getapi(`http://localhost:9000/posts/ALL/${subName.split(' ').join('%20')}`)
+        getapi(`${BACKEND_URL}posts/ALL/${subName.split(' ').join('%20')}`)
     }, [subName])
   return (
   <div>

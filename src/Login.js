@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
+import {BACKEND_URL} from './config.js'
 
 const Login = () => {
   let navigate = useNavigate(); 
@@ -39,7 +40,7 @@ const routeChange = () =>{
         alert(data.message)
       }
   }
-  getapi(`http://localhost:9000/users/`)
+  getapi(`${BACKEND_URL}users/`)
   }
 }>  
         <div style={{display: 'flex', flexDirection: 'column', width: '15vw'}}>   

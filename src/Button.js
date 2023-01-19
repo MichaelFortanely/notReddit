@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
-
+import {BACKEND_URL} from './config.js'
 
 const Button = () => {
     const [karma, setKarma] = useState(0)
@@ -22,7 +22,7 @@ const Button = () => {
         console.log(data[0].karma)
         setKarma(data[0].karma)
     }
-    getUserKarma(`http://localhost:9000/users/get_votes/${sessionStorage.getItem("user")}`)
+    getUserKarma(`${BACKEND_URL}users/get_votes/${sessionStorage.getItem("user")}`)
    
 
 //let me also fetch the karma

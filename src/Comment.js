@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import {BACKEND_URL} from './config.js'
 
 const Comment = ({commentID}) => {
   console.log('INSIDE COMMENT\n\n: ' + commentID)
@@ -17,7 +18,7 @@ const Comment = ({commentID}) => {
          setComment(data[0])
 
          }
-     _internal(`http://localhost:9000/comments/by_id/${commentID}`)
+     _internal(`${BACKEND_URL}comments/by_id/${commentID}`)
  }, [])
   return (
     <>

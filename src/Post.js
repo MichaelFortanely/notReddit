@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-
+import {BACKEND_URL} from './config.js'
 
 const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body, title}) => {
     console.log('upvotes ' + upvotes)
@@ -70,7 +70,7 @@ const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body, ti
                     }
                  }
                 setBottomClick(false)
-                voteApi(`http://localhost:9000/posts/vote/${postID}`, makeOneCall)
+                voteApi(`${BACKEND_URL}posts/vote/${postID}`, makeOneCall)
                 console.log(e.target.classList)
                 e.target.parentElement.children[1].classList.remove("clicked");
             }}></i>
@@ -98,7 +98,7 @@ const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body, ti
                     }
                 }
                 setTopClick(false)
-                voteApi(`http://localhost:9000/posts/vote/${postID}`, makeOneCall)
+                voteApi(`${BACKEND_URL}posts/vote/${postID}`, makeOneCall)
                 console.log(e.target.classList)
                 e.target.parentElement.children[0].classList.remove("clicked");
             }}></i>
