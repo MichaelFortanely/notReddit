@@ -47,6 +47,17 @@ html, body {
     font-size: large;
 }
 
+.post-page-text{
+    border-width: 1px;
+    border-radius: 5px;
+    background-color: #f5eeed;
+    border-color: gray;
+    padding: 15px;
+    font-size: large;
+    border-radius: 10px;
+    }
+    
+
 h3{
     position: relative;
     left: 50px;
@@ -228,3 +239,30 @@ img {
 #logout {
     background-color: red;
 }
+.create-button{
+
+    position: relative;
+    background-color: #ff8c00;
+    color: white;
+    width: 5vw;
+    border-radius: 3px;
+    font-size: medium;
+    font-weight: bolder;
+    left: 1600px;
+    top: -110px;
+}
+button{
+    color: white;
+    width: 5vw;
+    height: 4vh;
+    border-radius: 3px;
+    font-size: medium;
+    font-weight: bolder;
+}
+
+.submit-new-post{
+    margin: 25px;
+    background-color: green;
+}
+
+

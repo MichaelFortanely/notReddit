@@ -4,11 +4,11 @@ import Logo from './images/reddit.jpg'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import Button from './Button'
-import {BACKEND_URL} from './config.js'
+import {BACKEND_URL, FRONTEND_URL, usersFavSubreddit} from './config.js'
 // href="subs/
 
 const Homepage = () => {
-let usersFavSubreddit = ['AITA', 'Books', 'Pics', 'Surreal Memes']
+
 const [search, setSearch] = useState('')
 const [options, setOptions] = useState([])
 // let isLoggedIn = false
@@ -58,22 +58,26 @@ useEffect(() => {
         <div id="list-of-options">
             {options.map(function(option){
                 return <option onClick={() => {
-                window.location.href = `http://localhost:3000/posts/${option.postID}/${option.subreddit}`
+                window.location.href = `${FRONTEND_URL}posts/${option.postID}/${option.subreddit}`
                 }}>{option.title}</option>
             })}
         </div>
-    </form>
-                {/* {(<button className='login-button'  onClick={routeChange}>Log in</button>) && true}
-                {<button className='login-button' id="logout"  onClick={routeChange}>Log in</button> && !isLoggedIn} */}
+</form>
                 <Button/>
+                <button className='create-button' style={{position: 'relative', left: '74vw', top: '-19vh'}} 
+                onClick={() => {
+                    window.location.href = `${FRONTEND_URL}create_post/`
+                    }}>New Post</button>
             </nav>
             <div style={{position: 'fixed', top: '100px'}}>
                 <nav className='side'>
                     <center><a style={{fontSize: "30px"}} href='/home'>Home Page</a></center>
-                    {usersFavSubreddit.map(function(subreddit){
-                        return <a onClick={() => {
-                        }}href={`/subs/${subreddit}`}>{subreddit}</a>
-                    })}
+                    <div style={{display: 'flex', justifyContent: 'space-evenly', flexDirection: 'column', height: '60vh'}}> 
+                        {usersFavSubreddit.map(function(subreddit){
+                            return <a onClick={() => {
+                            }}href={`/subs/${subreddit}`}>{subreddit}</a>
+                        })}
+                    </div>
                 </nav>
             </div>
         </div>

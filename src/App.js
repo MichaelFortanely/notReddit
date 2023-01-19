@@ -6,7 +6,7 @@ import NotFound from './NotFound';
 import Subreddit from './Subreddit';
 import PostPage from './PostPage';
 import Login from './Login';
-import CreatePost from './CreatePost';
+import NewPost from './NewPost';
 
 function App() {
   return (
@@ -17,12 +17,12 @@ function App() {
         <Route path="home" element={<Body/>}/>
         {/* <Route index element={}/> */}
           {/*subreddits*/}
+        <Route path="create_post/" element={<NewPost/>}/>
         <Route path="subs/" >
           <Route path=":subredditName" element={<Subreddit/>}/>
         </Route>
         <Route path="posts/:postID/:subRedditName" element={<PostPage/>}/>
       </Route>
-      <Route path="create/" element={<CreatePost/>} />
       <Route path="login/" element={<Login/>} />
       <Route path="*" element={<NotFound/>}/>
     </Routes>

@@ -63,7 +63,7 @@ const PostPage = () => {
   return (
     <div>
         <h1 className='sub-name' style={{zIndex: '-1', position: 'relative'}}>
-                {subName}
+                r/{subName}
         </h1>
         <div className='background' style={{position: 'relative'}}>
             <Post key={mainComment.postId} isMainPost={true} postID={mainComment.postID} subreddit={mainComment.subreddit} user={mainComment.user} timestamp={mainComment.timestamp} upvotes={mainComment.upvotes} body={mainComment.body} title={mainComment.title}/>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import {BACKEND_URL} from './config.js'
+import {BACKEND_URL, FRONTEND_URL} from './config.js'
 
 const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body, title}) => {
     console.log('upvotes ' + upvotes)
@@ -106,7 +106,7 @@ const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body, ti
 }
       <center>
         <h3 style={{position: 'relative', left: '-100px'}}>{title}</h3>
-        <div className='post-body' style={{width: '70%'}} onClick={() => window.location.href = `http://localhost:3000/posts/${postID}/${subreddit}`}>{body}</div>
+        <div className='post-body' style={{width: '70%'}} onClick={() => window.location.href = `${FRONTEND_URL}posts/${postID}/${subreddit}`}>{body}</div>
         
             {isMainPost && 
             <form onSubmit={(e) => {
@@ -117,7 +117,7 @@ const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body, ti
             }
             }>
                 <textarea onClick={(e) => e.preventDefault()} id='response' placeholder="What are your thoughts?"></textarea>
-                <button type="submit" style={{width: '5vw', left: '-500px', position: 'relative'}}>Post Comment</button>
+                <button type="submit" style={{width: '5vw', left: '-500px', position: 'relative', backgroundColor: 'blue'}}>Post Comment</button>
             </form>
             }</center>
         
