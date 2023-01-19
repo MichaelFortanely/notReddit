@@ -13,13 +13,8 @@ const Button = () => {
             mode: "cors",
             headers: {"Content-Type": "application/json"}
         });
-        console.log('\n\n\n\n\n\n234534534')
         // Storing data in form of JSON
-        console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx')
         var data = await response.json();
-        console.log('JEERRRRRRRRRREREEEEEEEEE')
-        console.log('DATA: ')
-        console.log(data[0].karma)
         setKarma(data[0].karma)
     }
     getUserKarma(`${BACKEND_URL}users/get_votes/${sessionStorage.getItem("user")}`)

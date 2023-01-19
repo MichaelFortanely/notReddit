@@ -202,10 +202,23 @@ img {
 }
 
 #list-of-options{
-    position: relative;
-    background-color: red;
+    position: absolute;
+    background-color: #f5eeed;
     z-index: -1;
-    left: 600px;
+    top: 10vh;
+    left: 38vw;
+    border-radius: 10px;
+}
+
+#list-of-options > *{
+    margin: 10px;
+    padding: 10px;
+    font-size: large;
+}
+
+#list-of-options > *:hover{
+    color: blue;
+    font-size: larger;
 }
 
 .class{

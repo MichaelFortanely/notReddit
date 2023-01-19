@@ -24,7 +24,7 @@ const Subreddit = () => {
     }, [subName])
   return (
   <div>
-        <h1 className='sub-name'>
+        <h1 className='sub-name' style={{zIndex: '-1', position: 'relative'}}>
             {window.location.href.substring(window.location.href.lastIndexOf('/') + 1, window.location.href.length).split('%20').join(' ')}
         </h1>
         <div className='background subreddit' style={{position: 'relative'}}>

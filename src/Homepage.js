@@ -57,7 +57,9 @@ useEffect(() => {
         />
         <div id="list-of-options">
             {options.map(function(option){
-                return <option>{option.title}</option>
+                return <option onClick={() => {
+                window.location.href = `http://localhost:3000/posts/${option.postID}/${option.subreddit}`
+                }}>{option.title}</option>
             })}
         </div>
     </form>
