@@ -71,7 +71,6 @@ const VoteButtons = ({upvotes, postID}) => {
     <div className={`class${postID}`}>
             {voteChange}
             <i className="arrow up" onClick={(e) => {
-                // let element = Array.from(document.querySelector(`.class${postID}`).childNodes).slice(1)[0]
                 // console.log(element)
                 if(sessionStorage.getItem("user") !== null){
                 // console.log(e.target.classList)
