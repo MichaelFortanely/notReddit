@@ -76,6 +76,7 @@ const VoteButtons = ({upvotes, postID, isComment}) => {
                     console.log('elements of 1')
                     console.log(elements[1].classList)
                     elements[1].classList.add('clicked')
+                    elements[2].classList.remove('clicked')
                 }                     
                 setTopClick(true)
             } 
@@ -85,7 +86,7 @@ const VoteButtons = ({upvotes, postID, isComment}) => {
                 if(!isComment){
                     elements[1].classList.add('clicked')
                 } else{
-                    elements[2].classList.add('clicked')
+                     elements[2].classList.add('clicked')
                 }
                 setBottomClick(true)
             }
