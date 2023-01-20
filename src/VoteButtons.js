@@ -4,8 +4,9 @@ import {BACKEND_URL} from './config.js'
 import { useEffect } from 'react'
 
 
-const VoteButtons = ({upvotes, postID}) => {
+const VoteButtons = ({upvotes, postID, isComment}) => {
     console.log('upvotes ' + upvotes)
+    
     const [voteChange, setVoteChange] = useState(upvotes)
     console.log('voteChange: ' + voteChange)
     const [topClick, setTopClick] = useState(false)
@@ -13,38 +14,54 @@ const VoteButtons = ({upvotes, postID}) => {
 
     async function voteApi(url, count) {
         // Storing response
+        // console.log('mikl url ' + url)
         const response = await fetch(url, {
             mode: "cors",
             headers: {"Content-Type": "application/json"},
             method: 'PATCH',
             body: JSON.stringify({
               count: count,
-              user: sessionStorage.getItem("user")
+              user: sessionStorage.getItem("user"),
+              isComment: isComment
             })},);
         
         // Storing data in form of JSON
         var data = await response.json();
-        // console.log('response from patch request: ');
-        // console.log(data)
+        console.log('response from patch request: ');
+        console.log(data)
         // return data
         //how to identify the posts that have the same ID
     }
 
     async function doEffect(url){
+        console.log('LOOOOOKUPPPPP')
+        console.log(document.querySelector(`.class${postID}`))
         const response = await fetch(url, {
             mode: "cors",
             headers: {"Content-Type": "application/json"},
             method: 'PATCH',
             body: JSON.stringify({
               count: 0,
-              user: sessionStorage.getItem("user")
+              user: sessionStorage.getItem("user"),
+              isComment: isComment
             })},);
             var data = await response.json();
+            setVoteChange(data.upvotes)
             console.log('liked_posts')
+            console.log(data)
+            console.log(data.upvotes)
             console.log(data.liked_posts)
             console.log('disliked_posts')
             console.log(data.disliked_posts)
-            let elements = Array.from(document.querySelector(`.class${postID}`).childNodes).slice(1)
+            console.log(document.querySelector(`.class${postID}`))
+            console.log('postID : ' + postID)
+            console.log('array of both elements')
+            let elements = null
+            if(isComment === false){
+                elements = Array.from(document.querySelector(`.class${postID}`).childNodes).slice(1)
+            } else{
+                elements = Array.from(document.querySelector(`.class${postID}`).childNodes)
+            }
             console.log(elements)
             if(data.liked_posts.indexOf(postID) !== -1){
                 console.log('User ' + sessionStorage.getItem("user") + " has post " + postID + " in their liked posts")
@@ -65,6 +82,7 @@ const VoteButtons = ({upvotes, postID}) => {
         // let div = document.querySelector(`.class${postID}`)
         // if(div)
         doEffect(`${BACKEND_URL}posts/vote/${postID}`)
+        //TODO disabled for testing
     }, [])
 
   return (
