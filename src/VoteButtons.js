@@ -33,6 +33,7 @@ const VoteButtons = ({upvotes, postID, isComment}) => {
         //how to identify the posts that have the same ID
     }
 
+    //if I leave the top vote down button clicked then both buttons will appear clicked -> the API works fin though
     async function doEffect(url){
         console.log('LOOOOOKUPPPPP')
         console.log(document.querySelector(`.class${postID}`))
@@ -62,16 +63,30 @@ const VoteButtons = ({upvotes, postID, isComment}) => {
             } else{
                 elements = Array.from(document.querySelector(`.class${postID}`).childNodes)
             }
+            console.log('ELEMENTS\n')
             console.log(elements)
             if(data.liked_posts.indexOf(postID) !== -1){
                 console.log('User ' + sessionStorage.getItem("user") + " has post " + postID + " in their liked posts")
-                console.log(elements[0])
-                elements[0].classList.add('clicked')
+                console.log(topClick, bottomClick)
+                if(!isComment){
+                    console.log(elements[0])
+                    elements[0].classList.add('clicked')
+                } else{
+                    console.log(elements[1])
+                    console.log('elements of 1')
+                    console.log(elements[1].classList)
+                    elements[1].classList.add('clicked')
+                }                     
                 setTopClick(true)
             } 
-            if(data.disliked_posts.indexOf(postID) !== -1){
+            else if(data.disliked_posts.indexOf(postID) !== -1){
                 console.log('User ' + sessionStorage.getItem("user") + " has post " + postID + " in their disliked posts")
-                elements[1].classList.add('clicked')
+                console.log(topClick, bottomClick)
+                if(!isComment){
+                    elements[1].classList.add('clicked')
+                } else{
+                    elements[2].classList.add('clicked')
+                }
                 setBottomClick(true)
             }
     }
@@ -118,8 +133,9 @@ const VoteButtons = ({upvotes, postID, isComment}) => {
                  }
                 setBottomClick(false)
                 voteApi(`${BACKEND_URL}posts/vote/${postID}`, makeOneCall)
-                console.log(e.target.classList)
+                console.log('UNCLICK!!')
                 e.target.parentElement.children[1].classList.remove("clicked");
+                console.log(e.target.parentElement.children)
             } else{
                 alert('You must log in')
             }}}></i>
@@ -131,13 +147,18 @@ const VoteButtons = ({upvotes, postID, isComment}) => {
                 // top and !bottom -> - 2
                 //!top and bottom -> + 1
                 // !top and !bottom -> - 1
+                console.log('TARGET')
                 if(sessionStorage.getItem("user") !== null){
                     let makeOneCall = 0
                     if(bottomClick){
                         setBottomClick(false)
                         setVoteChange(voteChange + 1)
                         makeOneCall = 1
+                        console.log('before')
+                        console.log(e.target.classList)
                         e.target.classList.remove("clicked");
+                        console.log('after')
+                        console.log(e.target.classList)
                     }
                     else {
                         setBottomClick(true)
@@ -151,8 +172,10 @@ const VoteButtons = ({upvotes, postID, isComment}) => {
                         }
                     }
                     setTopClick(false)
+                    console.log('UNCLICK!!')
                     voteApi(`${BACKEND_URL}posts/vote/${postID}`, makeOneCall)
                     console.log(e.target.classList)
+                    console.log(e.target.parentElement.children)
                     e.target.parentElement.children[0].classList.remove("clicked");
             } else{
                 alert('You must log in')
