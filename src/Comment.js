@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import {BACKEND_URL} from './config.js'
+import VoteButtons from './VoteButtons.js'
 
 const Comment = ({commentID}) => {
   console.log('INSIDE COMMENT\n\n: ' + commentID)
@@ -13,7 +14,6 @@ const Comment = ({commentID}) => {
          
          // Storing data in form of JSON
          var data = await response.json();
-         console.log('Comment\n\n\nhskhskskhksh: ')
          console.log(data[0].body)
          console.log(typeof comment.timestamp)
          setComment(data[0])

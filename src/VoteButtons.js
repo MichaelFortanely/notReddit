@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState} from 'react'
 import {BACKEND_URL} from './config.js'
+import { useEffect } from 'react'
 
 
 const VoteButtons = ({upvotes, postID}) => {
@@ -8,7 +9,7 @@ const VoteButtons = ({upvotes, postID}) => {
     const [voteChange, setVoteChange] = useState(upvotes)
     console.log('voteChange: ' + voteChange)
     const [topClick, setTopClick] = useState(false)
-    const [bottomClick, setBottomClick] = useState()
+    const [bottomClick, setBottomClick] = useState(false)
 
     async function voteApi(url, count) {
         // Storing response
@@ -23,12 +24,55 @@ const VoteButtons = ({upvotes, postID}) => {
         
         // Storing data in form of JSON
         var data = await response.json();
-        console.log('response from patch request: ' + data);
+        // console.log('response from patch request: ');
+        // console.log(data)
+        // return data
+        //how to identify the posts that have the same ID
     }
+
+    async function doEffect(url){
+        const response = await fetch(url, {
+            mode: "cors",
+            headers: {"Content-Type": "application/json"},
+            method: 'PATCH',
+            body: JSON.stringify({
+              count: 0,
+              user: sessionStorage.getItem("user")
+            })},);
+            var data = await response.json();
+            console.log('liked_posts')
+            console.log(data.liked_posts)
+            console.log('disliked_posts')
+            console.log(data.disliked_posts)
+            let elements = Array.from(document.querySelector(`.class${postID}`).childNodes).slice(1)
+            console.log(elements)
+            if(data.liked_posts.indexOf(postID) !== -1){
+                console.log('User ' + sessionStorage.getItem("user") + " has post " + postID + " in their liked posts")
+                console.log(elements[0])
+                elements[0].classList.add('clicked')
+                setTopClick(true)
+            } 
+            if(data.disliked_posts.indexOf(postID) !== -1){
+                console.log('User ' + sessionStorage.getItem("user") + " has post " + postID + " in their disliked posts")
+                elements[1].classList.add('clicked')
+                setBottomClick(true)
+            }
+    }
+
+    useEffect(() => {
+        // let data = voteApi(`${BACKEND_URL}posts/vote/${postID}`, 0)
+        // console.log(data)
+        // let div = document.querySelector(`.class${postID}`)
+        // if(div)
+        doEffect(`${BACKEND_URL}posts/vote/${postID}`)
+    }, [])
+
   return (
-    <div>
+    <div className={`class${postID}`}>
             {voteChange}
             <i className="arrow up" onClick={(e) => {
+                // let element = Array.from(document.querySelector(`.class${postID}`).childNodes).slice(1)[0]
+                // console.log(element)
                 if(sessionStorage.getItem("user") !== null){
                 // console.log(e.target.classList)
                 // console.log(e.target.parentElement.children)
@@ -63,6 +107,9 @@ const VoteButtons = ({upvotes, postID}) => {
                 alert('You must log in')
             }}}></i>
             <i className="arrow down" onClick={(e) => {
+                // console.log(document.querySelector(`.class${postID}`))
+                // let element = Array.from(document.querySelector(`.class${postID}`).childNodes).slice(1)[1]
+                // console.log(element)
                 // setVoteChange(voteChange + (numClicks % 2 !== 1? -1: 1))
                 // top and !bottom -> - 2
                 //!top and bottom -> + 1
