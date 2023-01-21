@@ -1,14 +1,16 @@
 import React from 'react'
-import {FRONTEND_URL, BACKEND_URL} from './config.js'
+import {BACKEND_URL, FRONTEND_URL} from './config.js'
 import VoteButtons from './VoteButtons.js'
 
 const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body, title}) => {
+ 
     const date = new Date(timestamp);
     const formattedTimestamp = date.toLocaleString("en-us", { month: "long", day: "numeric", year: "numeric" });
-   isMainPost = isMainPost || false
+   isMainPost = isMainPost || false;
+
 
   return (
-    <div className='post-container'>
+    <div className='post-container' id={`container${postID}`} style={{background: sessionStorage.getItem(`container${postID}`) === 'true' ? '#F0F0F0': 'white'}}>
         <div className='post-top'>
             <span id='reddit'>r/{subreddit}</span><span id='not-reddit'>&emsp; Posted by u/{user} on {formattedTimestamp}</span>
             <span>
@@ -18,7 +20,16 @@ const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body, ti
             {!isMainPost && <VoteButtons upvotes={upvotes} postID={postID} isComment={false}/>}
       <center>
         <h3 style={{position: 'relative', left: '-100px'}}>{title}</h3>
-        <div className='post-body' style={{width: '70%'}} onClick={() => window.location.href = `${FRONTEND_URL}posts/${postID}/${subreddit}`}>{body}</div>
+        <div className='post-body' style={{width: '70%'}} onClick={() => 
+        {
+            //figure out whether I am 
+                //add mysrySelector(`#container${postID}`))
+                sessionStorage.setItem(`container${postID}`, true)
+                document.querySelectorAll(`#container${postID}`)[0].style.backgroundColor = '#F0F0F0'
+                window.location.href = `${FRONTEND_URL}posts/${postID}/${subreddit}`
+        }
+        }
+            >{body}</div>
         
             {isMainPost && 
             <form onSubmit={(e) => {

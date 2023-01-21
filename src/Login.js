@@ -29,6 +29,7 @@ const routeChange = () =>{
       var data = await response.json();
       console.log(data);
       if(data.status === 200){
+        sessionStorage.clear()
         sessionStorage.setItem("user", arr[0].value) 
         routeChange()
       } else{
