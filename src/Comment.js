@@ -24,14 +24,14 @@ const Comment = ({commentID}) => {
  }, [])
   return (
     <>
-    <div style={{backgroundColor: '#f5eeed', padding: "15px", margin: '5px', width: '70%'}} >
+    <div style={{backgroundColor: '#f5eeed', padding: "20px", margin: '5px', width: '70%', position: 'relative'}} >
       <div style={{position: 'relative', left: '20vw'}}>
         Posted by u/{comment.user} on {new Date(comment.timestamp).toLocaleString("en-us", { month: "long", day: "numeric", year: "numeric" })}
       </div><br/>
       <div style={{left: '5vw', position: 'relative'}}>
         {comment.body}
       </div>
-      <div><br/>
+      <div style={{position: 'relative', bottom: '5vh'}}><br/>
         <VoteButtons upvotes={comment.upvotes} postID={commentID} isComment={true}/>
       </div>
     </div>
