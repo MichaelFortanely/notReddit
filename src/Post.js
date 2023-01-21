@@ -15,7 +15,7 @@ const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body, ti
                 <button className='join-button'>Join</button>
             </span>
         </div> 
-            <VoteButtons upvotes={upvotes} postID={postID} isComment={false}/>
+            {!isMainPost && <VoteButtons upvotes={upvotes} postID={postID} isComment={false}/>}
       <center>
         <h3 style={{position: 'relative', left: '-100px'}}>{title}</h3>
         <div className='post-body' style={{width: '70%'}} onClick={() => window.location.href = `${FRONTEND_URL}posts/${postID}/${subreddit}`}>{body}</div>
@@ -42,6 +42,9 @@ const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body, ti
                     });
                     console.log('my_body')
                     console.log(my_body)
+                    setTimeout(() => {
+                        document.location.reload();
+                      }, 3000);
                     const response = await fetch(url, {
                         mode: "cors",
                         headers: {"Content-Type": "application/json"},
@@ -52,6 +55,8 @@ const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body, ti
                     var data = await response.json()
                     console.log('data is : ')
                     console.log(data)
+                    alert('Successfully created new comment')
+                    
                 }
                 makeComment(`${BACKEND_URL}comments/${postID}`)
 

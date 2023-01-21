@@ -4,14 +4,13 @@ import {BACKEND_URL} from './config.js'
 import { useEffect } from 'react'
 
 
-const VoteButtons = ({upvotes, postID, isComment}) => {
+const VoteButtons = ({upvotes, postID, isComment, isMainPost}) => {
     console.log('upvotes ' + upvotes)
     
     const [voteChange, setVoteChange] = useState(upvotes)
     console.log('voteChange: ' + voteChange)
     const [topClick, setTopClick] = useState(false)
     const [bottomClick, setBottomClick] = useState(false)
-    console.log('TOAST\n\n\n\n')
     console.log(upvotes, postID, isComment)
 
     async function voteApi(url, count) {
@@ -40,6 +39,7 @@ const VoteButtons = ({upvotes, postID, isComment}) => {
         console.log('LOOOOOKUPPPPP')
         console.log(document.querySelector(`.class${postID}`))
         console.log('url ' + url)
+        console.log('postID ' + postID)
         const response = await fetch(url, {
             mode: "cors",
             headers: {"Content-Type": "application/json"},
@@ -60,6 +60,7 @@ const VoteButtons = ({upvotes, postID, isComment}) => {
             console.log(document.querySelector(`.class${postID}`))
             console.log('postID : ' + postID)
             console.log('array of both elements')
+            console.log(document.querySelector(`.class${postID}`).childNodes)
             let elements = null
             if(isComment === false){
                 elements = Array.from(document.querySelector(`.class${postID}`).childNodes).slice(1)
@@ -100,7 +101,10 @@ const VoteButtons = ({upvotes, postID, isComment}) => {
         // console.log(data)
         // let div = document.querySelector(`.class${postID}`)
         // if(div)
-        doEffect(`${BACKEND_URL}posts/vote/${postID}`)
+        if(postID !== undefined){
+
+            doEffect(`${BACKEND_URL}posts/vote/${postID}`)
+        }
         //TODO disabled for testing
     }, [postID])
 
