@@ -4,7 +4,7 @@ import {BACKEND_URL} from './config.js'
 import VoteButtons from './VoteButtons.js'
 
 const Comment = ({commentID}) => {
-  console.log('INSIDE COMMENT\n\n: ' + commentID)
+  // console.log('INSIDE COMMENT\n\n: ' + commentID)
   const[comment, setComment] = useState("")
   //passing comment.upvotes is a problem because async props are not
   useEffect(() => {
@@ -15,9 +15,9 @@ const Comment = ({commentID}) => {
          
          // Storing data in form of JSON
          var data = await response.json();
-         console.log('\n\n\n\nPPP')
-         console.log(data[0].body)
-         console.log(data)
+        //  console.log('\n\n\n\nPPP')
+        //  console.log(data[0].body)
+        //  console.log(data)
          setComment(data[0])
          }
      _internal(`${BACKEND_URL}comments/by_id/${commentID}`)

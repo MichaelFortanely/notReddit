@@ -15,7 +15,7 @@ const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body, ti
                 <button className='join-button'>Join</button>
             </span>
         </div> 
-            {!isMainPost && <VoteButtons upvotes={upvotes} postID={postID} isComment={false}/>}
+            <VoteButtons upvotes={upvotes} postID={postID} isComment={false}/>
       <center>
         <h3 style={{position: 'relative', left: '-100px'}}>{title}</h3>
         <div className='post-body' style={{width: '70%'}} onClick={() => window.location.href = `${FRONTEND_URL}posts/${postID}/${subreddit}`}>{body}</div>

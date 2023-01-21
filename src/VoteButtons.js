@@ -11,6 +11,8 @@ const VoteButtons = ({upvotes, postID, isComment}) => {
     console.log('voteChange: ' + voteChange)
     const [topClick, setTopClick] = useState(false)
     const [bottomClick, setBottomClick] = useState(false)
+    console.log('TOAST\n\n\n\n')
+    console.log(upvotes, postID, isComment)
 
     async function voteApi(url, count) {
         // Storing response
@@ -37,6 +39,7 @@ const VoteButtons = ({upvotes, postID, isComment}) => {
     async function doEffect(url){
         console.log('LOOOOOKUPPPPP')
         console.log(document.querySelector(`.class${postID}`))
+        console.log('url ' + url)
         const response = await fetch(url, {
             mode: "cors",
             headers: {"Content-Type": "application/json"},
@@ -99,7 +102,7 @@ const VoteButtons = ({upvotes, postID, isComment}) => {
         // if(div)
         doEffect(`${BACKEND_URL}posts/vote/${postID}`)
         //TODO disabled for testing
-    }, [])
+    }, [postID])
 
   return (
     <div className={`class${postID}`}>
