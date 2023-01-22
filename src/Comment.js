@@ -28,7 +28,7 @@ const Comment = ({commentID}) => {
       <div style={{position: 'relative', left: '20vw'}}>
         Posted by u/{comment.user} on {new Date(comment.timestamp).toLocaleString("en-us", { month: "long", day: "numeric", year: "numeric" })}
       </div><br/>
-      <div style={{left: '5vw', position: 'relative'}}>
+      <div style={{left: '5vw', position: 'relative', width: '50vw'}}>
         {comment.body}
       </div>
       <div style={{position: 'relative', bottom: '5vh'}}><br/>
