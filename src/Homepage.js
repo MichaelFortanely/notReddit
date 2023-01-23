@@ -54,6 +54,18 @@ useEffect(() => {
             placeholder="Search posts by title or content..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault()
+                    console.log('do validate')
+                    if(options.length > 0){
+                        console.log('Title of first post is ' + options[0].title)
+                        window.location.href = `${FRONTEND_URL}posts/${options[0].postID}/${options[0].subreddit}`
+    
+                    } else{
+                        console.log('No options')
+                    }
+                  }}}
         />
         <div id="list-of-options">
             {options.map(function(option){
