@@ -1,4 +1,4 @@
-export const BACKEND_URL = 'http://localhost:9001/';
+export const BACKEND_URL = 'https://nodejs-reddit-backend-rest.herokuapp.com/';
 
 export const usersFavSubreddit = ['AITA', 'books', 'unpopularopinion', 'Trueoffmychest', 'explainlikeimfive', 'personalfinance'];
 
