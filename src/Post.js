@@ -39,7 +39,6 @@ const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body, ti
                 e.preventDefault()
                 console.log('starting new comment submission')
 
-
                 async function makeComment(url) {
                     //just fetch user
                     // Storing response
@@ -68,8 +67,12 @@ const Post = ({postID, isMainPost, subreddit, user, timestamp, upvotes, body, ti
                     console.log(data)
                     alert('Successfully created new comment')
                     
+                }//no comments that are empy 
+                if(document.querySelector('#response').value.length < 5 || sessionStorage.getItem("user") === null){
+                    alert('Comment must be at least 5 characters and you must be logged in')
+                } else{
+                    makeComment(`${BACKEND_URL}comments/${postID}`)
                 }
-                makeComment(`${BACKEND_URL}comments/${postID}`)
 
             }
             }>
